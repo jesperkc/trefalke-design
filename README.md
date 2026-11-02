@@ -24,8 +24,8 @@ To preload a font: `import url from '@trefalke/design/fonts/barlow_semicondensed
 
 ## Changing the design
 
-1. Edit the file here, commit, bump `version` in `package.json`, tag it (`git tag v0.2.0 && git push --tags`).
-2. In each app: `npm run design:update`, then commit `package.json` and `package-lock.json` and deploy.
+1. Edit the file here, commit, bump `version` in `package.json`, tag it (`git tag v0.2.0 && git push --follow-tags`).
+2. In each app: `npm run design:update` (installs the newest `v*` tag), then commit `package.json` and `package-lock.json` and deploy.
 
 Apps pin a tag, so a change here never reaches a site until that site updates.
 Neither app may redeclare a value that lives here; alias it instead.
