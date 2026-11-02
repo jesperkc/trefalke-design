@@ -1,0 +1,40 @@
+/**
+ * The Geometry Chart's tokens. The single source for the palette, the type
+ * families and the easing curves; see DESIGN.md for the reasoning.
+ *
+ * Apps may alias these under their own names (the storefront's `--gc-*`) but
+ * must not redeclare the values. Change a value here and both sites move.
+ *
+ * Red is absent on purpose. It means "cut here" on the exported pattern, and
+ * one colour may not mean two things across a brand.
+ */
+:root {
+  --paper: #f5f2ea;
+  --ink: #12333f;
+  /* Tinted from the ink's own hue, not a grey — a grey beside a coloured ink
+     reads as a mistake. Clears 5.5:1 on paper. */
+  --secondary: #4f666f;
+  --line-thin: rgba(18, 51, 63, 0.42);
+  --line-faint: rgba(18, 51, 63, 0.22);
+  --scrim: rgba(18, 51, 63, 0.3);
+
+  /* Provenance. `taped` is an alias of the ink: a measured quantity is the
+     object itself, so it takes the object line's colour. */
+  --taped: var(--ink);
+  /* Solver Green. A clear 60° of hue off the ink and 0.240 from it in OKLab, so
+     a derived figure reads as a second pen. Clears 4.7:1 on paper. */
+  --derived: #0c7d5b;
+  --assumed: #7a5100;
+
+  /* Caveat letters titles only. Barlow Semi Condensed is everything else;
+     Barlow Condensed is the narrow-viewport and short-viewport display. */
+  --display: 'Caveat', 'Barlow Semi Condensed', Arial, sans-serif;
+  --text: 'Barlow Semi Condensed', 'Helvetica Neue', Arial, sans-serif;
+  --condensed: 'Barlow Condensed', 'Barlow Semi Condensed', Arial, sans-serif;
+
+  /* The house arrival curve, and the one exception. A travelling stroke gets
+     the second: the arrival curve spends 45% of its distance in the first 11%
+     of its time, which makes a tape snap out and then crawl. A pen has mass. */
+  --arrive: cubic-bezier(0.16, 1, 0.3, 1);
+  --stroke: cubic-bezier(0.4, 0.08, 0.25, 1);
+}

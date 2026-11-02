@@ -1,0 +1,42 @@
+/**
+ * Barlow Semi Condensed, Barlow Condensed and Caveat, self-hosted.
+ *
+ * The urls are relative to this file on purpose: the consuming app's bundler
+ * (Vite) resolves them, hashes the files and prefixes its own `base`, so they
+ * work under trefalke.com, under trefalke.com/bags/builder/ and on a standalone
+ * deploy alike. Self-hosting also keeps them inside a `default-src 'self'` CSP.
+ *
+ * Semi condensed is a functional choice before a stylistic one: dimension text
+ * has to fit between extension lines. Caveat only ever letters a title.
+ */
+@font-face {
+  font-family: 'Barlow Semi Condensed';
+  src: url('./fonts/barlow_semicondensed_400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow Semi Condensed';
+  src: url('./fonts/barlow_semicondensed_600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow Condensed';
+  src: url('./fonts/barlow_condensed_600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Caveat';
+  src: url('./fonts/caveat_600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}

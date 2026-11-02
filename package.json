@@ -1,0 +1,17 @@
+{
+  "name": "@trefalke/design",
+  "version": "0.1.0",
+  "description": "Trefalke's shared design tokens, fonts and design system document. Consumed by trefalke.com and the bag builder.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "repository": "github:jesperkc/trefalke-design",
+  "exports": {
+    ".": "./index.css",
+    "./index.css": "./index.css",
+    "./tokens.css": "./tokens.css",
+    "./fonts.css": "./fonts.css",
+    "./fonts/*": "./fonts/*",
+    "./DESIGN.md": "./DESIGN.md"
+  },
+  "files": ["index.css", "tokens.css", "fonts.css", "fonts", "DESIGN.md", "README.md"]
+}
