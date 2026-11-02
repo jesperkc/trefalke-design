@@ -1,6 +1,6 @@
 {
   "name": "@trefalke/design",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Trefalke's shared design tokens, fonts and design system document. Consumed by trefalke.com and the bag builder.",
   "license": "UNLICENSED",
   "type": "module",

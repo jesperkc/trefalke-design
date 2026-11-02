@@ -161,15 +161,10 @@ the ink. Density is low and the paper is mostly empty; the composition works by
 placing few marks exactly, not by filling a grid. There is no card, no panel, no
 plate, no tile anywhere in the world.
 
-The world is opt-in per route. A route joins it by exporting
-`handle = {ground: 'paper'}`; `PageLayout` hoists the deepest matched route's
-answer onto the shell as `data-ground`, and the masthead, page and colophon all
-read one set of tokens from there. A route that says nothing keeps
-`data-ground="studio"` and the ported Studio theme. **The Studio theme
-(`app/styles/studio.css`) is migration scaffolding and an explicit
-anti-reference**: Manuale, the teal/sage/ochre palette and the pill buttons are
-evidence of what exists on the live Shopify theme, not authority over anything.
-Nothing in this document describes it, and nothing new should borrow from it.
+There is one world and one ground, the paper. Every route sits on it, and the
+masthead, page and colophon all read one set of tokens from the shell. The
+former Shopify theme (Manuale, the teal/sage/ochre palette, pill buttons) is
+gone and is not a reference for anything; nothing new should resemble it.
 
 **Key Characteristics:**
 
@@ -255,10 +250,11 @@ then Arial)
 **Body / Figure Font:** Barlow Semi Condensed 400 and 600 (falling back to
 Helvetica Neue, then Arial)
 
-Both are self-hosted from `/public/fonts` as woff2 with `font-display: swap`,
-and the 600 Condensed plus the 400 Semi Condensed are preloaded in `root.tsx`.
-Self-hosting is not a preference: Hydrogen's CSP allows `default-src 'self'` and
-would block a third-party font host outright.
+Both are self-hosted, shipped in this package's `fonts/` as woff2 with
+`font-display: swap`; the app's bundler hashes them, and the 600 Condensed plus
+the 400 Semi Condensed are preloaded in the storefront's `root.tsx`.
+Self-hosting is not a preference: a `default-src 'self'` CSP would block a
+third-party font host outright.
 
 **Character:** The condensed drafting alphabet and nothing else. Condensed is a
 functional choice before it is a stylistic one — dimension text has to fit in
@@ -309,17 +305,13 @@ drawing as a headline with a picture underneath it.
 
 ## Layout
 
-**The ground contract.** The shell (`.tf-shell`) hosts the whole world's tokens
-and publishes the active ground as `data-ground`. `studio` is the default — a
-route that has not been ported says nothing and keeps the theme it already had.
-`paper` is opted into by `export const handle = {ground: 'paper'}`. The chrome
-owns no colour of its own; every rule in it resolves through `--tf-ground`,
+**The ground contract.** The shell (`.tf-shell`) hosts the whole world's tokens.
+The chrome owns no colour of its own; every rule in it resolves through `--tf-ground`,
 `--tf-on-ground`, `--tf-on-ground-soft`, `--tf-ground-rule`, `--tf-ground-accent`
-and `--tf-scrim`, which is what lets one masthead serve both grounds without
-either looking borrowed.
+and `--tf-scrim`, which is what keeps the masthead and the page from disagreeing.
 
-**The sheet.** A paper-ground route is one sheet in one viewport, with no
-sections and no scroll. `<main>` becomes a flex column on paper so it hands its
+**The sheet.** The front routes are one sheet in one viewport, with no
+sections and no scroll. `<main>` is a flex column so it hands its
 height down rather than absorbing it, and the sheet takes
 `calc(100svh - var(--tf-mast-h, 88px))` with `overflow: hidden`. `100svh`, not
 `100dvh`: a sheet sized to the dynamic viewport re-lays itself every time a
@@ -335,8 +327,7 @@ colophon and the drawer. Vertically the sheet has two insets: the title at
 `clamp(16px, 2.4vw, 34px)` from the top, the action corner at
 `clamp(18px, 3vh, 34px)` from the bottom.
 
-**Measure.** `--tf-measure` is `1600px` on the paper ground and `none` on
-studio. It is applied to the masthead row and both colophon rows, which centre
+**Measure.** `--tf-measure` is `1600px`. It is applied to the masthead row and both colophon rows, which centre
 within it via `margin-inline: auto`. The sheet itself is _not_ capped — it runs
 full bleed at every width.
 
@@ -642,8 +633,8 @@ the travel.
 - **Do** guard state-bearing hover behind `@media (hover: hover)` and give
   `:focus-visible` the same treatment.
 - **Do** inline every icon as SVG at 18–22px with `currentColor`.
-- **Do** self-host any new face and preload the weights in use — Hydrogen's CSP
-  (`default-src 'self'`) blocks third-party font hosts outright.
+- **Do** self-host any new face, add it to this package, and preload the weights
+  in use — a `default-src 'self'` CSP blocks third-party font hosts outright.
 - **Do** let the static state be the finished artefact, so a failed stylesheet
   or a late paint still gives a correct sheet.
 
@@ -675,9 +666,8 @@ the travel.
   arrival and drop the travel.
 - **Don't** size a full-height surface with `100dvh`; use `100svh`, so a
   collapsing mobile address bar cannot re-lay the drawing under the reader.
-- **Don't** borrow anything from `app/styles/studio.css` — Manuale, the
-  teal/sage/ochre palette, the pill buttons. It is migration scaffolding and an
-  explicit anti-reference, kept only until each route is ported.
+- **Don't** bring back the old Shopify theme's look — Manuale, the
+  teal/sage/ochre palette, the pill buttons. It is gone.
 - **Don't** size touch targets off viewport width. Size them off
 `pointer: coarse`; a 1024px iPad is a touch screen.
 </content>
