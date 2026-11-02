@@ -574,7 +574,7 @@ The browser's own furniture belongs to the design.
 
 - **Selection:** Solver Green at 18% with ink text.
 - **Focus ring:** `2px solid {colors.derived}`, `3px` offset, `1px` radius.
-- **Scrollbar:** declared at `html:has(.tf-shell[data-ground='paper'])` with
+- **Scrollbar:** declared at `html` with
   `color-scheme: light`, an 11px track in paper and a thumb in
   `{colors.scrim}` (→ `{colors.secondary}` on hover). The selector has to reach
   the root: the viewport scrollbar is propagated from `html`, and a descendant
